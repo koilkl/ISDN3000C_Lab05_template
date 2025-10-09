@@ -19,7 +19,6 @@ print(df.info())
 Exercise 2.1: Initial Inspection & Cleaning
 '''
 df['timestamp']=pd.to_datetime(df['timestamp'])
-# print(df['timestamp'].dt.year)
 temperature_f=df['temperature_c'].str.replace(r'\s*˚C', '', regex=True).astype(float)*9/5+32
 print("first 5 of temperature_f:\n",temperature_f.head())
 
@@ -29,10 +28,7 @@ Exercise 2.2: Missing Data & Filtering
 nullsum=(df['soil_moisture'].str.replace(r'\s*%', '', regex=True).astype(float)).isnull().sum()
 df['soil_moisture'] = df['soil_moisture'].str.replace(r'\s*%', '', regex=True).astype(float)
 
-# n=pd.DataFrame()
-# n["timestamp_unix"]= df['timestamp'].astype('int64')  # 转换为数值型
-# n['timestamp_unix'] = n['timestamp_unix'].interpolate(method='time')
-# df['timestamp'] = pd.to_datetime(n['timestamp_unix'], unit='ns')
+
 df['timestamp']=df['timestamp'].interpolate(method='linear')
 df['soil_moisture'] = df.groupby('timestamp')['soil_moisture'].transform(
     lambda group: group.fillna(group.mean()))
@@ -42,7 +38,6 @@ patio_high_light=patio_high_light[patio_high_light>1200]
 print("first 5 of patio_high_light ",patio_high_light.head(),"\n\n")
 
 
-# df.to_csv('plant_sensors_cleaned.csv', index=False)
 
 '''
 Exercise 2.3: Grouping and Aggregation

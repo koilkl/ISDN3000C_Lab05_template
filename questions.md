@@ -85,4 +85,4 @@ Monstera
 **Visualizations**
 ![alt text](image.png)
 **A short paragraph justifying which sensor you believe is faulty**
-Sensor B_1 is faulty, because in the period from 2023-07-01 to 2023-07-08, it has a big gap between max moisture value and min moisture value.
+Sensor B_1 is faulty, because in the period from 2023-07-01 to 2023-07-08, it has a biggest gap between max moisture value and min moisture value.
